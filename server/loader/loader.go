@@ -310,8 +310,8 @@ func RenderApplet(path string, config map[string]string, width, height, magnify,
 		return nil, output, fmt.Errorf("error running script: %w", err)
 	}
 
-	if filters.Output2x && len(roots) != 0 {
-		if roots[0].Supports2x {
+	if filters.Output2x {
+		if applet.Manifest != nil && applet.Manifest.Supports2x {
 			width *= 2
 			height *= 2
 		} else {
